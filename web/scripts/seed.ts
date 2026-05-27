@@ -25,7 +25,7 @@ function loadEnv(): Record<string, string> {
     return Object.fromEntries(
       envFile.split('\n')
         .filter(l => l.trim() && !l.startsWith('#'))
-        .map(l => l.split('=').map(s => s.trim()) as [string, string])
+        .map(l => { const i = l.indexOf('='); return [l.slice(0, i).trim(), l.slice(i + 1).trim().replace(/\r/g, '')] as [string, string]; })
         .filter(([k]) => k)
     );
   } catch {

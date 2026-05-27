@@ -3,15 +3,16 @@
   import type { LyricLine, Annotation } from '$lib/types';
 
   interface Props {
-    rawLyrics:   string;
-    lines:       LyricLine[];
-    annotations: Record<string, Annotation>;
-    activeId:    string | null;
-    onActivate:  (id: string | null) => void;
-    onSelect:    (sel: { start: number; end: number; text: string } | null) => void;
+    rawLyrics:    string;
+    lines:        LyricLine[];
+    annotations:  Record<string, Annotation>;
+    activeId:     string | null;
+    hasSelection: boolean;   // true while the annotation form is open — suppresses selectionchange
+    onActivate:   (id: string | null) => void;
+    onSelect:     (sel: { start: number; end: number; text: string } | null) => void;
   }
 
-  let { rawLyrics, lines, annotations, activeId, onActivate, onSelect }: Props = $props();
+  let { rawLyrics, lines, annotations, activeId, hasSelection, onActivate, onSelect }: Props = $props();
 
   let ghostEl = $state<HTMLDivElement | null>(null);
   let debounce: ReturnType<typeof setTimeout>;
@@ -33,8 +34,14 @@
   }
 
   function onSelectionChange() {
+    // If the annotation form is already open, ignore all selection changes.
+    // The textarea's autofocus fires selectionchange which would otherwise
+    // immediately close the form.
+    if (hasSelection) return;
+
     clearTimeout(debounce);
     debounce = setTimeout(() => {
+      if (hasSelection) return; // re-check after debounce
       const sel = window.getSelection();
       if (!sel?.rangeCount || sel.isCollapsed) { onSelect(null); return; }
       const node = sel.getRangeAt(0).commonAncestorContainer;
@@ -132,19 +139,22 @@
 </script>
 
 <div class="lyric-card">
-  <div class="lyrics-stack">
+  <!-- position:relative is inlined as a failsafe — scoped CSS can be unreliable
+       when the same class (.lyric-card) is also defined globally in app.css -->
+  <div class="lyrics-stack" style="position: relative;">
 
-    <!-- Ghost layer: raw text only — sits above visible, captures selection & clicks -->
+    <!-- Ghost layer: raw text only — captures selection & clicks, invisible to user -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
       class="lyrics-ghost"
+      style="position: absolute; inset: 0; z-index: 2; color: transparent; background: transparent; cursor: text; user-select: text; -webkit-user-select: text; white-space: pre-wrap; word-break: break-word; font-size: inherit; line-height: inherit; font-family: inherit;"
       bind:this={ghostEl}
       onclick={handleGhostClick}
       aria-hidden="true"
     >{rawLyrics}</div>
 
     <!-- Visible layer: section labels + highlighted lyrics (display only, no events) -->
-    <div class="lyrics-visible">
+    <div class="lyrics-visible" style="position: relative; z-index: 1; pointer-events: none; white-space: pre-wrap; word-break: break-word;">
       {@html rendered}
     </div>
 

@@ -1,8 +1,9 @@
 /**
  * Global toast notification store.
+ * Must be a .svelte.ts file so the Svelte compiler processes $state.
  *
- * Usage (from any Svelte component or server action):
- *   import { toast } from '$lib/toast'
+ * Usage (from any Svelte component):
+ *   import { toast } from '$lib/toast.svelte'
  *   toast.success('Annotation live. ɛyɛ!')
  *   toast.error('Something went wrong.')
  *   toast.info('Sign in to upvote.')

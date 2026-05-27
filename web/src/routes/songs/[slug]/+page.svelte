@@ -6,7 +6,7 @@
   import AnnotationForm   from '$lib/components/AnnotationForm.svelte';
   import RealtimeStatus   from '$lib/components/RealtimeStatus.svelte';
   import { SUPABASE_CONFIGURED, getSupabaseBrowser } from '$lib/supabase-browser';
-  import { toast } from '$lib/toast';
+  import { toast } from '$lib/toast.svelte';
 
   let { data }: { data: PageData } = $props();
   const song   = $derived(data.song);
@@ -307,6 +307,7 @@
         lines={song.lyrics}
         {annotations}
         {activeId}
+        hasSelection={Boolean(selection)}
         onActivate={handleActivate}
         onSelect={handleSelect}
       />
