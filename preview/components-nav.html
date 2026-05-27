@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Navigation</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 0; background: var(--bg); }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px; background: rgba(250,246,238,0.78);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -0.025em; color: var(--fg); }
+  .brand-mark { display: inline-flex; }
+  .links { display: flex; gap: 22px; }
+  .link { font-size: 14px; font-weight: 500; color: var(--fg-muted); cursor: pointer; }
+  .link.active { color: var(--fg); }
+  .link.active::after { content: ""; display:block; height: 2px; background: var(--accent); border-radius: 2px; margin-top: 4px; }
+  .actions { display: flex; gap: 8px; align-items: center; }
+  .search {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg-sunken); border-radius: var(--radius-pill);
+    padding: 7px 14px 7px 12px; font-size: 13px; color: var(--fg-subtle);
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--accent); color: var(--accent-fg); font-weight: 600; font-size: 13px;
+    padding: 7px 14px; border-radius: var(--radius-pill); border: none; cursor: pointer;
+  }
+</style></head>
+<body>
+<div class="nav">
+  <div class="brand">
+    <span class="brand-mark"><svg width="20" height="20" viewBox="0 0 120 120"><g fill="#C9462C">
+      <rect x="10"  y="68" width="14" height="38" rx="6"/>
+      <rect x="34"  y="32" width="14" height="74" rx="6"/>
+      <rect x="58"  y="50" width="14" height="56" rx="6"/>
+      <rect x="82"  y="20" width="14" height="86" rx="6"/>
+      <rect x="106" y="60" width="14" height="46" rx="6"/>
+    </g></svg></span>
+    soundbaze
+  </div>
+  <div class="links">
+    <span class="link active">Songs</span>
+    <span class="link">Artists</span>
+    <span class="link">Albums</span>
+    <span class="link">Community</span>
+  </div>
+  <div class="actions">
+    <div class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+      Search
+    </div>
+    <button class="btn-primary">Sign in</button>
+  </div>
+</div>
+</body></html>

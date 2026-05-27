@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Semantic colors</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 18px 24px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .item {
+    border-radius: var(--radius-md); border: 1px solid var(--border);
+    height: 78px; padding: 10px 12px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .item .v { font-family: var(--font-mono); font-size: 10px; }
+  .item .n { font-size: 12px; font-weight: 600; }
+</style></head>
+<body>
+<div class="grid">
+  <div class="item" style="background:var(--bg)"><span class="n" style="color:var(--fg)">bg</span><span class="v" style="color:var(--fg-muted)">#FAF6EE</span></div>
+  <div class="item" style="background:var(--bg-elevated)"><span class="n" style="color:var(--fg)">bg-elevated</span><span class="v" style="color:var(--fg-muted)">#FFFFFF</span></div>
+  <div class="item" style="background:var(--bg-sunken)"><span class="n" style="color:var(--fg)">bg-sunken</span><span class="v" style="color:var(--fg-muted)">#F3ECDE</span></div>
+  <div class="item" style="background:var(--bg-inverse)"><span class="n" style="color:var(--fg-inverse)">bg-inverse</span><span class="v" style="color:var(--silver-3)">#14110F</span></div>
+
+  <div class="item" style="background:var(--bg-elevated)"><span class="n" style="color:var(--fg)">fg</span><span class="v" style="color:var(--fg-muted)">#3D2E26</span></div>
+  <div class="item" style="background:var(--bg-elevated)"><span class="n" style="color:var(--fg-muted)">fg-muted</span><span class="v" style="color:var(--fg-subtle)">#5C463A</span></div>
+  <div class="item" style="background:var(--bg-elevated)"><span class="n" style="color:var(--fg-subtle)">fg-subtle</span><span class="v" style="color:var(--fg-subtle)">#826A5C</span></div>
+  <div class="item" style="background:var(--accent);"><span class="n" style="color:var(--accent-fg)">accent</span><span class="v" style="color:var(--accent-fg);opacity:.8">#C9462C</span></div>
+
+  <div class="item" style="background:var(--accent-tint)"><span class="n" style="color:var(--paprika-deep)">accent-tint</span><span class="v" style="color:var(--paprika-deep)">#F4DDD4</span></div>
+  <div class="item" style="background:var(--bg-elevated);border-color:var(--border-strong)"><span class="n" style="color:var(--fg)">border-strong</span><span class="v" style="color:var(--fg-muted)">#C4C0B6</span></div>
+  <div class="item" style="background:#EDF3EC;border-color:var(--success)"><span class="n" style="color:var(--success)">success</span><span class="v" style="color:var(--success)">#4B7A4A</span></div>
+  <div class="item" style="background:#FBEFE0;border-color:var(--warning)"><span class="n" style="color:var(--warning)">warning</span><span class="v" style="color:var(--warning)">#C97A2C</span></div>
+</div>
+</body></html>

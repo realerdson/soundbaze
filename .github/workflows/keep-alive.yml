@@ -1,0 +1,21 @@
+name: Keep Supabase alive
+
+# Supabase free-tier projects pause after 7 days of inactivity (20s cold start).
+# This pings the health endpoint every 3 days to prevent that.
+
+on:
+  schedule:
+    - cron: '0 8 */3 * *'   # 08:00 UTC every 3 days
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping health endpoint
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.APP_URL }}/api/health")
+          echo "Health check status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "::warning::Health check returned $STATUS"
+          fi

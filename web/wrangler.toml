@@ -1,0 +1,17 @@
+name            = "soundbaze"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = ".svelte-kit/cloudflare"
+
+# ── KV Namespaces ──────────────────────────────────────────────────────────
+# Create via: Cloudflare dashboard → Workers & Pages → KV → Create namespace
+# Then paste the ID here. Free tier: 100k reads/day, 1k writes/day.
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id      = "YOUR_KV_NAMESPACE_ID"
+
+# ── Environment variables ──────────────────────────────────────────────────
+# Set secrets via Cloudflare dashboard → Pages → Settings → Environment variables
+# (do NOT put actual secret values in this file — it is committed to git)
+[vars]
+# Non-secret public vars can go here:
+# VITE_APP_NAME = "SoundBaze"

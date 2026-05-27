@@ -1,0 +1,89 @@
+/* ==========================================================================
+   SoundBaze — shadcn / Tailwind token bridge
+   ==========================================================================
+   IMPORTANT: this file uses the standard shadcn variable names
+   (--background, --foreground, --primary, --accent, --border, …) which
+   COLLIDE with the semantic SoundBaze tokens in `colors_and_type.css`. Two
+   safe ways to use it:
+
+   1) **In a shadcn project** — copy these declarations into your
+      `globals.css` (replacing the default shadcn block) and DO NOT
+      import `colors_and_type.css` alongside it. The shadcn primitives
+      will theme automatically.
+
+   2) **In a SoundBaze demo or page that uses both** — apply the scoped
+      `.shadcn-theme` class to the subtree where you want shadcn
+      components to render. The semantic SoundBaze tokens stay intact
+      outside that subtree.
+
+   All color values are HSL triplets so `hsl(var(--primary))` works
+   as shadcn expects.
+   ========================================================================== */
+
+/* ---------- Option 1: drop-in shadcn theme ---------- */
+.soundbaze-shadcn,
+[data-theme="soundbaze"] {
+  --background:         42 67% 95%;     /* floral white */
+  --foreground:         18 23% 19%;     /* charcoal brown */
+
+  --card:               0 0% 100%;
+  --card-foreground:    18 23% 19%;
+
+  --popover:            0 0% 100%;
+  --popover-foreground: 18 23% 19%;
+
+  --primary:            10 65% 48%;     /* spicy paprika */
+  --primary-foreground: 42 67% 95%;
+
+  --secondary:          42 40% 90%;     /* floral white 2 */
+  --secondary-foreground: 18 23% 19%;
+
+  --muted:              42 25% 86%;
+  --muted-foreground:   20 17% 30%;
+
+  --accent:             10 65% 92%;     /* paprika tint */
+  --accent-foreground:  10 65% 28%;
+
+  --destructive:        9 71% 41%;
+  --destructive-foreground: 42 67% 95%;
+
+  --border:             40 22% 84%;
+  --input:              40 22% 84%;
+  --ring:               10 65% 48%;
+
+  --radius: 14px;
+}
+
+/* Dark variant — apply with `<div class="dark soundbaze-shadcn">` */
+.soundbaze-shadcn.dark,
+[data-theme="soundbaze"].dark,
+.dark .soundbaze-shadcn,
+.dark[data-theme="soundbaze"] {
+  --background:         18 12% 7%;      /* near carbon-black */
+  --foreground:         42 67% 95%;
+  --card:               18 12% 10%;
+  --card-foreground:    42 67% 95%;
+  --popover:            18 12% 10%;
+  --popover-foreground: 42 67% 95%;
+  --primary:            10 65% 56%;     /* lifted paprika */
+  --primary-foreground: 18 12% 7%;
+  --secondary:          18 10% 14%;
+  --secondary-foreground: 42 67% 95%;
+  --muted:              18 10% 16%;
+  --muted-foreground:   42 20% 70%;
+  --accent:             10 40% 22%;
+  --accent-foreground:  42 67% 95%;
+  --destructive:        9 65% 50%;
+  --destructive-foreground: 42 67% 95%;
+  --border:             18 10% 18%;
+  --input:              18 10% 18%;
+  --ring:               10 65% 56%;
+}
+
+/* ==========================================================================
+   Tailwind v4 / shadcn copy-paste block
+   --------------------------------------------------------------------------
+   Strip the `.soundbaze-shadcn` selector above and use these declarations
+   directly inside `@layer base { :root { … } }` and `.dark { … }` in
+   your shadcn project's globals.css. Same values, just unscoped.
+   ========================================================================== */

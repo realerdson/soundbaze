@@ -1,0 +1,25 @@
+# SvelteKit build output
+.svelte-kit/
+build/
+.cloudflare/
+
+# Dependencies
+node_modules/
+
+# Environment — NEVER commit these
+.env
+.env.local
+.env.*.local
+
+# Cloudflare Wrangler
+.wrangler/
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

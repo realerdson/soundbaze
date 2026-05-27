@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Brand palette</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 18px 24px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .swatch {
+    aspect-ratio: 1 / 1.05;
+    border-radius: var(--radius-lg);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .swatch.cream { background: var(--floral-white); border: 1px solid var(--border); }
+  .swatch.silver { background: var(--silver); }
+  .swatch.charcoal { background: var(--charcoal-brown); }
+  .swatch.carbon { background: var(--carbon-black); }
+  .swatch.paprika { background: var(--spicy-paprika); }
+  .name { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
+  .hex { font-family: var(--font-mono); font-size: 11px; opacity: 0.7; margin-top: 2px; }
+  .light .name, .light .hex { color: var(--charcoal-brown); }
+  .dark .name, .dark .hex { color: var(--floral-white); }
+</style></head>
+<body>
+<div class="grid">
+  <div class="swatch cream light"><div class="name">Floral White</div><div class="hex">#FAF6EE</div></div>
+  <div class="swatch silver light"><div class="name">Silver</div><div class="hex">#C4C0B6</div></div>
+  <div class="swatch charcoal dark"><div class="name">Charcoal Brown</div><div class="hex">#3D2E26</div></div>
+  <div class="swatch carbon dark"><div class="name">Carbon Black</div><div class="hex">#14110F</div></div>
+  <div class="swatch paprika dark"><div class="name">Spicy Paprika</div><div class="hex">#C9462C</div></div>
+</div>
+</body></html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Form inputs</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 22px 24px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+  .group { display: flex; flex-direction: column; gap: 6px; }
+  .lbl { font-size: 12px; font-weight: 600; color: var(--fg-muted); }
+  .input {
+    font-family: var(--font-sans); font-size: 15px; color: var(--fg);
+    background: var(--bg-elevated); border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm); padding: 11px 14px; outline: none;
+    transition: border-color 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
+  }
+  .input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--focus-ring); }
+  .input.search {
+    background: var(--bg-elevated);
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%235C463A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: 12px center;
+    padding-left: 40px;
+  }
+</style></head>
+<body>
+<div class="row">
+  <div class="group"><label class="lbl">Search</label><input class="input search" placeholder="Find a song, artist, or lyric"></div>
+  <div class="group"><label class="lbl">Email</label><input class="input" value="me@soundbaze.fm"></div>
+</div>
+<div class="row">
+  <div class="group"><label class="lbl">Annotation</label><textarea class="input" rows="2">Probably a reference to her debut single — same chord progression.</textarea></div>
+  <div class="group"><label class="lbl">Focused</label><input class="input" autofocus value="Beach House"></div>
+</div>
+</body></html>

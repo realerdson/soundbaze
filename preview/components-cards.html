@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cards</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 20px 24px; background: var(--bg); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card-elev {
+    background: var(--bg-elevated); border-radius: var(--radius-lg);
+    padding: 16px; box-shadow: var(--shadow-sm); display: flex; gap: 12px; align-items: center;
+  }
+  .card-elev .cover { width: 56px; height: 56px; border-radius: var(--radius-sm); background: var(--charcoal-brown); flex-shrink: 0; overflow: hidden; }
+  .card-elev .cover img { width: 100%; height: 100%; }
+  .card-elev .ttl { font-size: 15px; font-weight: 600; color: var(--fg); }
+  .card-elev .sub { font-size: 13px; color: var(--fg-subtle); margin-top: 2px; }
+  .meta { display: flex; gap: 8px; margin-top: 8px; }
+  .pill {
+    font-size: 11px; font-weight: 500; color: var(--fg-muted);
+    background: var(--bg-sunken); padding: 3px 8px; border-radius: var(--radius-pill);
+  }
+  .pill.accent { background: var(--accent-tint); color: var(--paprika-deep); font-weight: 600; }
+</style></head>
+<body>
+<div class="grid">
+  <div class="card-elev">
+    <div class="cover"><img src="../assets/placeholder-album-1.svg"></div>
+    <div style="flex:1">
+      <div class="ttl">After the show</div>
+      <div class="sub">Saba — Few Good Things</div>
+      <div class="meta"><span class="pill accent">147 annotations</span><span class="pill">2022</span></div>
+    </div>
+  </div>
+  <div class="card-elev">
+    <div class="cover"><img src="../assets/placeholder-album-2.svg"></div>
+    <div style="flex:1">
+      <div class="ttl">Cracks in the ceiling</div>
+      <div class="sub">Sault — Untitled (Black Is)</div>
+      <div class="meta"><span class="pill accent">89 annotations</span><span class="pill">2020</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

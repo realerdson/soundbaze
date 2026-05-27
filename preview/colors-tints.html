@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Tints & shades</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 18px 24px; }
+  .group { margin-bottom: 14px; }
+  .group:last-child { margin-bottom: 0; }
+  .group-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-caps);
+    color: var(--fg-subtle); margin-bottom: 8px;
+  }
+  .ramp { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .step {
+    height: 56px; border-radius: var(--radius-sm);
+    display: flex; align-items: flex-end; padding: 6px 8px;
+    font-family: var(--font-mono); font-size: 10px;
+    border: 1px solid var(--border);
+  }
+</style></head>
+<body>
+<div class="group">
+  <div class="group-label">Cream</div>
+  <div class="ramp">
+    <div class="step" style="background:#FFFFFF;color:#3D2E26">#FFFFFF</div>
+    <div class="step" style="background:var(--floral-white);color:#3D2E26">#FAF6EE</div>
+    <div class="step" style="background:var(--floral-white-2);color:#3D2E26">#F3ECDE</div>
+    <div class="step" style="background:var(--floral-white-3);color:#3D2E26">#ECE2CE</div>
+  </div>
+</div>
+<div class="group">
+  <div class="group-label">Stone</div>
+  <div class="ramp">
+    <div class="step" style="background:var(--silver-2);color:#3D2E26">#D9D5CB</div>
+    <div class="step" style="background:var(--silver);color:#3D2E26">#C4C0B6</div>
+    <div class="step" style="background:var(--silver-3);color:#FAF6EE">#A8A398</div>
+  </div>
+</div>
+<div class="group">
+  <div class="group-label">Charcoal &rarr; Carbon</div>
+  <div class="ramp">
+    <div class="step" style="background:var(--charcoal-3);color:#FAF6EE">#826A5C</div>
+    <div class="step" style="background:var(--charcoal-2);color:#FAF6EE">#5C463A</div>
+    <div class="step" style="background:var(--charcoal-brown);color:#FAF6EE">#3D2E26</div>
+    <div class="step" style="background:var(--carbon-black);color:#FAF6EE">#14110F</div>
+  </div>
+</div>
+<div class="group">
+  <div class="group-label">Paprika</div>
+  <div class="ramp">
+    <div class="step" style="background:var(--paprika-tint);color:#3D2E26">#F4DDD4</div>
+    <div class="step" style="background:var(--paprika-tint-2);color:#3D2E26">#EBC2B3</div>
+    <div class="step" style="background:var(--spicy-paprika);color:#FAF6EE">#C9462C</div>
+    <div class="step" style="background:var(--paprika-deep);color:#FAF6EE">#A33820</div>
+  </div>
+</div>
+</body></html>

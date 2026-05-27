@@ -1,0 +1,112 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Kente accent</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 18px 22px; }
+  .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .label {
+    font-size: 10px; font-weight: 600; letter-spacing: var(--tracking-caps);
+    text-transform: uppercase; color: var(--fg-subtle);
+  }
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+
+  /* --- size variants column --- */
+  .sizes { display: flex; flex-direction: column; gap: 10px; }
+  .size-row { display: flex; align-items: center; gap: 12px; }
+  .size-row .name { font-family: var(--font-mono); font-size: 10px; color: var(--fg-muted); width: 60px; flex-shrink: 0; }
+  .band { background: var(--kente-stripe); border-radius: 3px; flex: 1; }
+
+  /* --- panel demo --- */
+  .panel-card {
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-sm); background: var(--bg-elevated);
+  }
+  .panel-card .top { background: var(--kente-panel); height: 64px; }
+  .panel-card .body { padding: 12px 14px; }
+  .panel-card .ttl { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg); }
+  .panel-card .sub { font-size: 11px; color: var(--fg-subtle); margin-top: 2px; }
+
+  /* --- on dark: song-header foot --- */
+  .header-demo {
+    background: var(--charcoal-brown); border-radius: var(--radius-lg);
+    padding: 14px 16px 0;
+    color: var(--floral-white); overflow: hidden;
+  }
+  .header-demo .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: var(--tracking-caps);
+    text-transform: uppercase; color: var(--paprika-tint-2);
+  }
+  .header-demo .ttl { font-size: 20px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin-top: 4px; }
+  .header-demo .meta { font-size: 11px; opacity: 0.7; margin: 6px 0 12px; }
+  .header-demo .b { background: var(--kente-stripe); height: 8px; margin: 0 -16px; }
+
+  /* --- inline rim accent --- */
+  .rim-demo {
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 12px 14px 0; background: var(--bg-elevated); overflow: hidden;
+  }
+  .rim-demo .row { display:flex; align-items: center; gap: 10px; }
+  .rim-demo .av {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--accent);
+    color: var(--accent-fg); font-weight: 700; font-size: 14px;
+    display: inline-flex; align-items:center; justify-content: center;
+  }
+  .rim-demo .nm { font-size: 13px; font-weight: 600; color: var(--fg); }
+  .rim-demo .ag { font-size: 11px; color: var(--fg-subtle); }
+  .rim-demo .b { background: var(--kente-stripe); height: 6px; margin: 12px -14px 0; }
+
+  .caption {
+    grid-column: 1 / -1;
+    font-size: 10px; color: var(--fg-subtle); line-height: 1.5; font-style: italic;
+    padding-top: 4px;
+  }
+</style></head>
+<body>
+<div class="grid">
+
+  <!-- LEFT — size variants -->
+  <div class="stack">
+    <div class="label">Three sizes &middot; thin / med / thick</div>
+    <div class="sizes">
+      <div class="size-row"><span class="name">--thin&nbsp;5px</span><div class="band" style="height:5px"></div></div>
+      <div class="size-row"><span class="name">10px</span><div class="band" style="height:10px"></div></div>
+      <div class="size-row"><span class="name">22px</span><div class="band" style="height:22px"></div></div>
+    </div>
+
+    <div class="label" style="margin-top:6px">Ceremonial &middot; full kente panel</div>
+    <div class="panel-card">
+      <div class="top"></div>
+      <div class="body">
+        <div class="ttl">Mmere Pa Da W'anim</div>
+        <div class="sub">"good days lie ahead" &middot; panel rim for verified artists</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT — usage demos -->
+  <div class="stack">
+    <div class="label">In use &middot; song header foot</div>
+    <div class="header-demo">
+      <div class="eyebrow">Song &middot; annotated</div>
+      <div class="ttl">Abrokyire blues</div>
+      <div class="meta">Kojo Adwoa &middot; 247 annotations</div>
+      <div class="b"></div>
+    </div>
+
+    <div class="label" style="margin-top:6px">In use &middot; contributor card rim</div>
+    <div class="rim-demo">
+      <div class="row">
+        <div class="av">A</div>
+        <div>
+          <div class="nm">@ama_acc</div>
+          <div class="ag">Top contributor &middot; 412 reads this week</div>
+        </div>
+      </div>
+      <div class="b"></div>
+    </div>
+  </div>
+
+  <div class="caption">Layered weft &middot; warp gradients; use one band per surface. Never tile vertically, never as a background fill.</div>
+</div>
+</body></html>

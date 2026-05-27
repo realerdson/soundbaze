@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { padding: 22px 24px; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .row:last-child { margin-bottom: 0; }
+  .btn {
+    font-family: var(--font-sans); font-weight: 600; font-size: 15px;
+    padding: 11px 22px; border-radius: var(--radius-md); border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 140ms var(--ease-out);
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-fg); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--charcoal-brown); color: var(--floral-white); }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border-strong); }
+  .btn-ghost:hover { background: var(--bg-sunken); }
+  .btn-link { background: transparent; color: var(--accent); padding-left: 0; padding-right: 0; }
+  .btn-sm { font-size: 13px; padding: 8px 14px; border-radius: var(--radius-sm); }
+  .btn-lg { font-size: 17px; padding: 14px 28px; border-radius: var(--radius-md); }
+  .btn-pill { border-radius: var(--radius-pill); }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--fg-subtle); width: 80px; }
+</style></head>
+<body>
+<div class="row"><span class="label">Primary</span>
+  <button class="btn btn-primary btn-sm">Sign in</button>
+  <button class="btn btn-primary">Sign in</button>
+  <button class="btn btn-primary btn-lg">Find a song</button>
+  <button class="btn btn-primary btn-pill">Follow artist</button>
+</div>
+<div class="row"><span class="label">Secondary</span>
+  <button class="btn btn-secondary">Save line</button>
+  <button class="btn btn-ghost">How it works</button>
+  <button class="btn btn-link">Read the breakdown →</button>
+</div>
+</body></html>

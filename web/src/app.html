@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FAF6EE" />
+
+    <!-- Default meta — overridden per-page in <svelte:head> -->
+    <meta name="description" content="SoundBaze — line-by-line annotations for Ghanaian music. Hiplife, drill, alté, gospel highlife." />
+
+    <!-- Default OG — overridden per-page -->
+    <meta property="og:site_name"   content="SoundBaze" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="SoundBaze — Every song has a second layer." />
+    <meta property="og:description" content="Line-by-line annotations for Ghanaian music." />
+    <meta property="og:image"       content="%sveltekit.assets%/og-default.png" />
+
+    <meta name="twitter:card"       content="summary_large_image" />
+    <meta name="twitter:site"       content="@soundbaze" />
+
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>
