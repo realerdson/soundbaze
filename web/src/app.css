@@ -17,22 +17,22 @@
 }
 
 /* ── Tailwind theme ─────────────────────────────────────────────────────── */
+/* All color values reference :root tokens — no raw values here.            */
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  /* Light-mode defaults — overridden by CSS custom props in dark mode */
-  --color-bg:           #FFFFFF;
-  --color-bg-elevated:  #FFFFFF;
-  --color-bg-sunken:    #F5F5F5;
-  --color-bg-inverse:   #003924;
-  --color-fg:           #650000;
-  --color-fg-muted:     #850000;
-  --color-fg-subtle:    #666666;
-  --color-fg-inverse:   #F5F5F5;
-  --color-border:       rgba(204, 179, 59, 0.2);
-  --color-accent:       #850000;
-  --color-accent-hover: #650000;
-  --color-accent-tint:  rgba(133, 0, 0, 0.08);
+  --color-bg:           var(--bg);
+  --color-bg-elevated:  var(--bg-elevated);
+  --color-bg-sunken:    var(--bg-sunken);
+  --color-bg-inverse:   var(--bg-inverse);
+  --color-fg:           var(--fg);
+  --color-fg-muted:     var(--fg-muted);
+  --color-fg-subtle:    var(--fg-subtle);
+  --color-fg-inverse:   var(--fg-inverse);
+  --color-border:       var(--border);
+  --color-accent:       var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-tint:  var(--accent-tint);
 }
 
 /* ── Design tokens ──────────────────────────────────────────────────────── */
@@ -61,20 +61,59 @@
   --mid-gray:      #666666;
   --dark-gray:     #333333;
 
+  /* ── RGB channel vars (enable rgba(var(--x-rgb), α) pattern) ────────── */
+  --white-rgb:        255, 255, 255;
+  --off-white-rgb:    245, 245, 245;
+  --forest-deep-rgb:  0, 57, 36;     /* channels of --forest-deep #003924  */
+  --forest-abyss-rgb: 0, 10, 6;      /* near-black green for dark backdrops */
+  --gold-rgb:         204, 179, 59;  /* channels of --gold #CCB33B          */
+  --maroon-rgb:       133, 0, 0;     /* channels of --maroon #850000        */
+  --shadow-color:     101, 0, 0;     /* maroon-shadow channels (light mode) */
+
+  /* ── Gold opacity variants ───────────────────────────────────────────── */
+  --gold-a12:  rgba(var(--gold-rgb), 0.12);
+  --gold-a14:  rgba(var(--gold-rgb), 0.14);
+  --gold-a16:  rgba(var(--gold-rgb), 0.16);
+  --gold-a18:  rgba(var(--gold-rgb), 0.18);
+  --gold-a20:  rgba(var(--gold-rgb), 0.20);
+  --gold-a32:  rgba(var(--gold-rgb), 0.32);
+  --gold-a38:  rgba(var(--gold-rgb), 0.38);
+  --gold-a40:  rgba(var(--gold-rgb), 0.40);
+  --gold-a45:  rgba(var(--gold-rgb), 0.45); /* kente dim band     */
+  --gold-a78:  rgba(var(--gold-rgb), 0.78); /* accent text on dark bg */
+
+  /* ── Maroon opacity variants ─────────────────────────────────────────── */
+  --maroon-a08: rgba(var(--maroon-rgb), 0.08);
+  --maroon-a12: rgba(var(--maroon-rgb), 0.12);
+  --maroon-a16: rgba(var(--maroon-rgb), 0.16);
+  --maroon-a18: rgba(var(--maroon-rgb), 0.18); /* accent halo / pulse ring */
+  --maroon-a25: rgba(var(--maroon-rgb), 0.25);
+  --maroon-a28: rgba(var(--maroon-rgb), 0.28);
+  --maroon-a46: rgba(var(--maroon-rgb), 0.46);
+
+  /* ── On-dark-surface tokens (elements always on a dark green bg) ─────── */
+  --on-dark-divider: rgba(var(--off-white-rgb), 0.12); /* divider lines  */
+  --on-dark-surface: rgba(var(--off-white-rgb), 0.08); /* subtle fill    */
+  --on-dark-handle:  rgba(var(--off-white-rgb), 0.25); /* sheet handle   */
+
+  /* ── Overlay / glass ─────────────────────────────────────────────────── */
+  --backdrop:      rgba(var(--forest-abyss-rgb), 0.50);
+  --kente-shimmer: rgba(var(--white-rgb), 0.40);
+
   /* ── Backward-compatible aliases (referenced directly in component CSS) */
   --floral-white:   var(--off-white);
   --floral-white-2: var(--off-white-2);
   --floral-white-3: var(--off-white-3);
-  --silver:         rgba(204, 179, 59, 0.38);
-  --silver-2:       rgba(204, 179, 59, 0.20);
-  --silver-3:       rgba(204, 179, 59, 0.14);
+  --silver:         var(--gold-a38);
+  --silver-2:       var(--gold-a20);
+  --silver-3:       var(--gold-a14);
   --charcoal-brown: var(--forest-deep);   /* dark surface: song-header, ann-panel */
   --charcoal-2:     var(--forest-mid);
-  --charcoal-3:     #005033;
+  --charcoal-3:     var(--forest-mid);
   --carbon-black:   var(--forest-carbon); /* darkest surface: footer */
   --spicy-paprika:  var(--maroon);
-  --paprika-tint:   rgba(133, 0, 0, 0.08);
-  --paprika-tint-2: rgba(204, 179, 59, 0.78); /* gold-muted — used as accent text on dark bg */
+  --paprika-tint:   var(--maroon-a08);
+  --paprika-tint-2: var(--gold-a78);      /* gold-muted — accent text on dark bg */
   --paprika-deep:   var(--maroon-deep);
 
   /* ── Semantic tokens — LIGHT MODE (default) ─────────────────────────── */
@@ -86,32 +125,33 @@
   --fg-muted:        var(--maroon);
   --fg-subtle:       var(--mid-gray);
   --fg-inverse:      var(--off-white);
-  --border:          rgba(204, 179, 59, 0.20);
-  --border-strong:   rgba(204, 179, 59, 0.40);
-  --divider:         rgba(204, 179, 59, 0.16);
+  --border:          var(--gold-a20);
+  --border-strong:   var(--gold-a40);
+  --divider:         var(--gold-a16);
   --accent:          var(--maroon);
   --accent-fg:       var(--white);
-  --accent-tint:     rgba(133, 0, 0, 0.08);
+  --accent-tint:     var(--maroon-a08);
   --accent-hover:    var(--maroon-deep);
-  --annotation-bg:        rgba(133, 0, 0, 0.08);
-  --annotation-bg-hover:  rgba(133, 0, 0, 0.16);
+  --annotation-bg:        var(--maroon-a08);
+  --annotation-bg-hover:  var(--maroon-a16);
   --annotation-marker:    var(--maroon);
   --link:            var(--maroon);
   --link-hover:      var(--maroon-deep);
-  --focus-ring:      rgba(133, 0, 0, 0.25);
+  --focus-ring:      var(--maroon-a25);
 
   /* Glass / overlay surfaces */
-  --nav-bg:        rgba(255, 255, 255, 0.88);
-  --hero-scrim-0:  rgba(255, 255, 255, 0);
-  --hero-glass:    rgba(255, 255, 255, 0.92);
-  --surface-glass: rgba(255, 255, 255, 0.88);
+  --nav-bg:        rgba(var(--white-rgb), 0.88);
+  --hero-scrim-0:  rgba(var(--white-rgb), 0);
+  --hero-glass:    rgba(var(--white-rgb), 0.92);
+  --surface-glass: rgba(var(--white-rgb), 0.88);
 
   /* ── Shadows (maroon-keyed for light mode) ──────────────────────────── */
-  --shadow-xs: 0 1px 0 rgba(101, 0, 0, 0.04);
-  --shadow-sm: 0 1px 2px rgba(101, 0, 0, 0.07), 0 1px 1px rgba(101, 0, 0, 0.04);
-  --shadow-md: 0 6px 16px -6px rgba(101, 0, 0, 0.12), 0 2px 4px rgba(101, 0, 0, 0.06);
-  --shadow-lg: 0 18px 40px -14px rgba(101, 0, 0, 0.18), 0 6px 14px -8px rgba(101, 0, 0, 0.08);
-  --shadow-xl: 0 36px 60px -24px rgba(101, 0, 0, 0.26);
+  --shadow-color:  101, 0, 0;
+  --shadow-xs: 0 1px 0   rgba(var(--shadow-color), 0.04);
+  --shadow-sm: 0 1px 2px rgba(var(--shadow-color), 0.07), 0 1px 1px rgba(var(--shadow-color), 0.04);
+  --shadow-md: 0 6px 16px -6px rgba(var(--shadow-color), 0.12), 0 2px 4px rgba(var(--shadow-color), 0.06);
+  --shadow-lg: 0 18px 40px -14px rgba(var(--shadow-color), 0.18), 0 6px 14px -8px rgba(var(--shadow-color), 0.08);
+  --shadow-xl: 0 36px 60px -24px rgba(var(--shadow-color), 0.26);
 
   /* ── Shape ──────────────────────────────────────────────────────────── */
   --radius-xs:   6px;
@@ -137,19 +177,25 @@
   /* ── Kente stripe — forest green · maroon · gold palette ───────────── */
   --kente-stripe:
     repeating-linear-gradient(90deg,
-      transparent 0 56px, rgba(255,255,255,0.40) 56px 58px, transparent 58px 116px),
+      transparent 0 56px, var(--kente-shimmer) 56px 58px, transparent 58px 116px),
     repeating-linear-gradient(90deg,
-      #850000 0 22px, #003924 22px 44px, #F5F5F5 44px 50px,
-      #CCB33B 50px 78px, #001B10 78px 84px, #003924 84px 116px,
-      rgba(204,179,59,0.45) 116px 128px, #850000 128px 158px, #003924 158px 184px);
+      var(--maroon)        0    22px,
+      var(--forest-deep)   22px 44px,
+      var(--off-white)     44px 50px,
+      var(--gold)          50px 78px,
+      var(--forest-carbon) 78px 84px,
+      var(--forest-deep)   84px 116px,
+      var(--gold-a45)      116px 128px,
+      var(--maroon)        128px 158px,
+      var(--forest-deep)   158px 184px);
 }
 
 /* ── Dark mode ──────────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
     /* Override backward-compat aliases */
-    --charcoal-brown: var(--forest-mid);   /* elevated above body in dark mode */
-    --paprika-tint:   rgba(133, 0, 0, 0.25);
+    --charcoal-brown: var(--forest-mid); /* elevated above body in dark mode */
+    --paprika-tint:   var(--maroon-a25);
 
     /* Semantic overrides */
     --bg:              var(--forest-deep);
@@ -158,34 +204,34 @@
     --bg-inverse:      var(--off-white);
     --fg:              var(--gold);
     --fg-muted:        var(--off-white);
-    --fg-subtle:       rgba(245, 245, 245, 0.58);
+    --fg-subtle:       rgba(var(--off-white-rgb), 0.58);
     --fg-inverse:      var(--forest-deep);
-    --border:          rgba(204, 179, 59, 0.18);
-    --border-strong:   rgba(204, 179, 59, 0.32);
-    --divider:         rgba(204, 179, 59, 0.12);
+    --border:          var(--gold-a18);
+    --border-strong:   var(--gold-a32);
+    --divider:         var(--gold-a12);
     --accent:          var(--maroon);
     --accent-fg:       var(--white);
-    --accent-tint:     rgba(133, 0, 0, 0.28);
+    --accent-tint:     var(--maroon-a28);
     --accent-hover:    var(--maroon-deep);
-    --annotation-bg:        rgba(133, 0, 0, 0.28);
-    --annotation-bg-hover:  rgba(133, 0, 0, 0.46);
+    --annotation-bg:        var(--maroon-a28);
+    --annotation-bg-hover:  var(--maroon-a46);
     --annotation-marker:    var(--maroon);
     --link:            var(--gold);
     --link-hover:      var(--gold-deep);
-    --focus-ring:      rgba(204, 179, 59, 0.32);
+    --focus-ring:      var(--gold-a32);
 
     /* Glass / overlay surfaces */
-    --nav-bg:        rgba(0, 57, 36, 0.90);
-    --hero-scrim-0:  rgba(0, 57, 36, 0);
-    --hero-glass:    rgba(0, 57, 36, 0.92);
-    --surface-glass: rgba(0, 57, 36, 0.88);
+    --nav-bg:        rgba(var(--forest-deep-rgb), 0.90);
+    --hero-scrim-0:  rgba(var(--forest-deep-rgb), 0);
+    --hero-glass:    rgba(var(--forest-deep-rgb), 0.92);
+    --surface-glass: rgba(var(--forest-deep-rgb), 0.88);
 
-    /* Shadows — deeper, black-based for dark surfaces */
-    --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.14);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.22), 0 1px 1px rgba(0, 0, 0, 0.14);
-    --shadow-md: 0 6px 16px -6px rgba(0, 0, 0, 0.36), 0 2px 4px rgba(0, 0, 0, 0.20);
-    --shadow-lg: 0 18px 40px -14px rgba(0, 0, 0, 0.48), 0 6px 14px -8px rgba(0, 0, 0, 0.24);
-    --shadow-xl: 0 36px 60px -24px rgba(0, 0, 0, 0.58);
+    /* Shadows — black-based for dark surfaces */
+    --shadow-color:  0, 0, 0;
+
+    /* Overlay / surface overrides */
+    --backdrop:      rgba(var(--forest-abyss-rgb), 0.65);
+    --kente-shimmer: rgba(var(--white-rgb), 0.20);
   }
 
   /* Pill-accent: swap text to gold for legibility on dark-green cards */
@@ -355,7 +401,7 @@ a:hover { color: var(--link-hover); }
 }
 .hero-eyebrow::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 0 4px rgba(133, 0, 0, 0.18);
+  background: var(--accent); box-shadow: 0 0 0 4px var(--maroon-a18);
 }
 .hero-headline {
   font-size: clamp(48px, 6.2vw, 76px); font-weight: 700;
@@ -462,13 +508,13 @@ a:hover { color: var(--link-hover); }
 .ann-body { font-size: 15px; line-height: 1.55; opacity: 0.92; }
 .ann-by {
   display: flex; align-items: center; gap: 12px;
-  padding-top: 16px; border-top: 1px solid rgba(245,245,245,0.12); margin-top: 4px;
+  padding-top: 16px; border-top: 1px solid var(--on-dark-divider); margin-top: 4px;
 }
 .ann-by-name { font-size: 13px; font-weight: 600; }
 .ann-by-meta { font-size: 12px; opacity: 0.6; }
 .ann-by-vote {
   margin-left: auto; display: inline-flex; align-items: center; gap: 4px;
-  background: rgba(245,245,245,0.08); padding: 6px 10px; border-radius: var(--radius-pill);
+  background: var(--on-dark-surface); padding: 6px 10px; border-radius: var(--radius-pill);
   font-size: 12px; font-weight: 600;
 }
 .ann-empty {
@@ -510,7 +556,7 @@ a:hover { color: var(--link-hover); }
 .footer-col h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-caps); opacity: 0.7; margin-bottom: 14px; }
 .footer-col a { display: block; color: var(--floral-white); opacity: 0.85; font-size: 14px; margin-bottom: 8px; text-decoration: none; }
 .footer-col a:hover { opacity: 1; color: var(--paprika-tint-2); }
-.footer-bottom { border-top: 1px solid rgba(245,245,245,0.12); margin-top: 48px; padding-top: 24px; font-size: 12px; opacity: 0.6; display: flex; justify-content: space-between; }
+.footer-bottom { border-top: 1px solid var(--on-dark-divider); margin-top: 48px; padding-top: 24px; font-size: 12px; opacity: 0.6; display: flex; justify-content: space-between; }
 
 /* ── Floating annotate CTA ──────────────────────────────────────────────── */
 .float-cta {
@@ -531,7 +577,7 @@ a:hover { color: var(--link-hover); }
 .sheet-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 90;
-  background: rgba(20,17,15,0.4);
+  background: var(--backdrop);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -540,7 +586,7 @@ a:hover { color: var(--link-hover); }
 .sheet-handle {
   display: none;
   width: 40px; height: 4px;
-  background: rgba(245,245,245,0.25);
+  background: var(--on-dark-handle);
   border-radius: 2px;
   margin: 0 auto 14px;
   flex-shrink: 0;
