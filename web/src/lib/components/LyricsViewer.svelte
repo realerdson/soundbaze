@@ -213,7 +213,7 @@
     color: var(--accent);
     margin: 28px 0 10px;
     padding-bottom: 6px;
-    border-bottom: 1px solid var(--divider);
+    border-bottom: 1px solid #E9E2D3;
   }
   .lyrics-visible :global(.lyric-section:first-child) { margin-top: 0; }
 
